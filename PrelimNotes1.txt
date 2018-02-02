@@ -1,0 +1,51 @@
+switch - pc == copper straight through
+rs 232 = for console cables
+pc to other device = fast ethernet. 
+fast ethernet port = 100mbps
+(ethernet = 10mbps)
+
+switch to switch = crossover cable
+--gigabit ethernet port
+
+192.168.1.0
+192.168.1.255
+
+class c ip address 
+= 192.168.1.0 <-- networkaddress
+= 192.168.n.n
+192.168.1.1 to 192.168.1.254 == allocatable address
+
+broadcast address = 192.168.1.255 
+
+
+===========================================================
+Switch>?
+Switch>enable
+switch# show run
+switch# copy running-config startup-config -- save!
+
+switch>enable
+switch#configure terminal     
+switch(config)# enable secret class <--class== password
+switch(config)#lin con 0
+switch(config-line)#pass cisco
+switch(config-line)#login
+switch(config-line)#exit
+switch(config)#lin vty 0 4 == TELNET
+switch(config-line)#pass cisco
+switch(config-line)#login
+switch(config-line)#exit
+
+Password:cisco
+
+switch>enable
+Password:class
+Switch#configure terminal
+switch(config)#int vlan 1--interface
+switch(config-if)#ip address 192.168.1.4 255.255.255.0
+switch(config-if)#no shut
+switch(config-if)#exit
+switch(config)#exit
+switch#copy running-config startup-config 
+
+telnet 192.168.1.4 == used to configure the switch thru the pc
